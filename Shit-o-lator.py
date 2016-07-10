@@ -1,21 +1,21 @@
 # The best shit-code calculator ever! ;-)
+# v2.0!
 
-print("#### The best shit'o'lator ever! Enjoy! ;-) ####")
+print("######## Shit'o'lator v2.0! Enjoy! ;-) #########")
 print("################################################\n")
 
-# Check of the digits
+# Checking of the digits
 def digit_check(dig, n):
     try:
         float(dig)
         return (True)
     except (ValueError):
-        print("Input the correct digit!\n")
         if n == 1:
             digit_input(1)
         else:
             digit_input(2)
 
-# input the digits
+# Inputting of the digits
 def digit_input(n):
     cor = False
     while not cor:
@@ -30,36 +30,36 @@ def digit_input(n):
             cor = digit_check(dig2, n)
             return dig2
 
+# Starts here. Inputting the first digit
 digit_input(1)
 
-# Input, checking the operation & calculation
+# Inputing & checking the operation
+oper_kind = {'+': [], '-': [], \
+             '*': [], '/': []}
 corr = False
 while not corr:
     oper = input("Input the operation (+ - * /): ")
-
-    if oper == '+':
-        digit_input(2)
-        print("The result is: ", float(dig1) + float(dig2))
-        corr = True
-    elif oper == '-':
-        digit_input(2)
-        print("The result is: ", float(dig1) - float(dig2))
-        corr = True
-
-    elif oper == '*':
-        digit_input(2)
-        print("The result is: ", float(dig1) * float(dig2))
-        corr = True
-
-    elif oper == '/':
-        digit_input(2)
-        if float(dig2) > 0:
-            print("The result is: ", float(dig1) / float(dig2))
+    for n in oper_kind:
+        if oper == n:
             corr = True
-        else:
-            print("You can't divide on zero!\n")
-            continue
-    else:
-        print("Input the correct operation symbol!\n")
+
+# Inputting the second digit
+digit_input(2)
+
+oper_kind = {'+': float(dig1) + float(dig2),
+             '-': float(dig1) - float(dig2),
+             '*': float(dig1) * float(dig2),
+             '/': float(dig1) / float(dig2)}
+
+for n in oper_kind:
+        if n == oper:
+            sum = oper_kind[n]
+
+if sum - int(sum) == 0:
+    print()
+    print("The result is: %i" % sum)
+else:
+    print()
+    print("The result is: %f" % sum)
 
 print("\n############# Have a nice day! ;-) #############")
